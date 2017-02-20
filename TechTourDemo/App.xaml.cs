@@ -8,7 +8,8 @@ namespace TechTourDemo
 		{
 			InitializeComponent();
 
-			MainPage = new TechTourDemoPage();
+			var demoPage = new TechTourDemoPage();
+			MainPage = new NavigationPage(demoPage);
 		}
 
 		protected override void OnStart()
