@@ -23,6 +23,7 @@ namespace TechTourDemo
 				new TodoItem { IsDone = true, Name = "Xamarin.Forms - Intro" },
 				new TodoItem { IsDone = true, Name = "Xamarin.Forms - Hello World" },
 				new TodoItem { IsDone = false, Name = "Xamarin.Forms - ListView" },
+				new TodoItem { IsDone = false, Name = "Xamarin.Forms - Behaviors" },
 				new TodoItem { IsDone = false, Name = "Xamarin.Forms - Data Binding" },
 				new TodoItem { IsDone = false, Name = "Xamarin.Forms - SQLite!!" }
 			});
