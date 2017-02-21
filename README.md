@@ -22,3 +22,8 @@ a funciones nativas del dispositivo.
 # Correr el Proyecto
 Para correr el proyecto o iniciar uno en Xamarin, necesitaras una conexión a internet para restaurar las dependencias
 de los servidores de NuGet asi como Visual Studio 2015, Visual Studio para Mac o Xamarin Studio.
+
+#Contacto
+twitter: [@acidstudios](http://www.twitter.com/acidstudios) [@tavobarrientos](http://www.twitter.com/tavobarrientos)
+email: [gustavo.barrientos@acidstudios.me](mailto:gustavo.barrientos@acidstudios.me)
+url: [http://www.acidstudios.me]
