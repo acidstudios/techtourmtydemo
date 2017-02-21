@@ -35,14 +35,8 @@ namespace TechTourDemo
 
 		public TechTourDemoPageViewModel()
 		{
-			TodoItems = new ObservableCollection<TodoItem>(new List<TodoItem>
-			{
-				new TodoItem { IsDone = true, Name = "Xamarin.Forms - Intro" },
-				new TodoItem { IsDone = true, Name = "Xamarin.Forms - Hello World" },
-				new TodoItem { IsDone = true, Name = "Xamarin.Forms - ListView" },
-				new TodoItem { IsDone = true, Name = "Xamarin.Forms - Data Binding" },
-				new TodoItem { IsDone = false, Name = "Xamarin.Forms - SQLite!!" }
-			});
+			var items = Database.GetAll();
+			TodoItems = new ObservableCollection<TodoItem>(items);
 
 			MessagingCenter.Subscribe<DetailPageViewModel, TodoItem>(this, "SaveTodo", HandleAction);
 
@@ -65,16 +59,22 @@ namespace TechTourDemo
 
 				if (confirm)
 				{
-					TodoItems.Remove(obj);
+					var deleted = Database.Delete(obj);
+
+					if (deleted > 0)
+					{
+						TodoItems.Remove(obj);
+					}
 				}
 			});
 		}
 
 		void HandleAction(DetailPageViewModel arg1, TodoItem arg2)
 		{
-			var exists = TodoItems.Any(x => x.Name == arg2.Name);
+			var isInsert = arg2.Id == 0;
+			var exists = Database.Upsert(arg2);
 
-			if (!exists)
+			if (exists > 0 && isInsert)
 			{
 				TodoItems.Add(arg2);
 			}

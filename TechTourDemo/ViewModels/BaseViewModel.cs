@@ -12,8 +12,15 @@ namespace TechTourDemo
 			set;
 		}
 
+		public DatabaseService Database
+		{
+			get;
+			set;
+		}
+
 		public BaseViewModel()
 		{
+			Database = new DatabaseService();
 		}
 
 
