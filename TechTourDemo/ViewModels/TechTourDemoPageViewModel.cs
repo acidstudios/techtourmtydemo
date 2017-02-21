@@ -27,6 +27,12 @@ namespace TechTourDemo
 			set;
 		}
 
+		public ICommand DeleteTodoItemCommand
+		{
+			get;
+			set;
+		}
+
 		public TechTourDemoPageViewModel()
 		{
 			TodoItems = new ObservableCollection<TodoItem>(new List<TodoItem>
@@ -51,6 +57,16 @@ namespace TechTourDemo
 				var page = new DetailPage(obj);
 
 				Application.Current.MainPage.Navigation.PushAsync(page);
+			});
+
+			DeleteTodoItemCommand = new Command<TodoItem>(async (TodoItem obj) =>
+			{
+				var confirm = await Application.Current.MainPage.DisplayAlert("Confirmar", $"¿Deseas borrar {obj.Name}?", "Si", "No");
+
+				if (confirm)
+				{
+					TodoItems.Remove(obj);
+				}
 			});
 		}
 

@@ -11,7 +11,12 @@
 	<ListView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="TodoList" ItemsSource="{Binding TodoItems}">
 		<ListView.ItemTemplate>
 			<DataTemplate>
-				<TextCell Text="{Binding Name}" Command="{Binding BindingContext.SelectTodoItemCommand, Source={x:Reference MainPage}}" CommandParameter="{Binding .}" />
+				<TextCell Text="{Binding Name}" Command="{Binding BindingContext.SelectTodoItemCommand, Source={x:Reference MainPage}}" CommandParameter="{Binding .}">
+					<TextCell.ContextActions>
+						<MenuItem Command="{Binding BindingContext.SelectTodoItemCommand, Source={x:Reference MainPage}}" CommandParameter="{Binding .}" Text="Más"/>
+						<MenuItem Command="{Binding BindingContext.DeleteTodoItemCommand, Source={x:Reference MainPage}}" CommandParameter="{Binding .}" Text="Borrar" IsDestructive="true" />
+					</TextCell.ContextActions>
+				</TextCell>
 			</DataTemplate>
 		</ListView.ItemTemplate>
 	</ListView>
