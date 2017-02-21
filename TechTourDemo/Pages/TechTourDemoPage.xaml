@@ -3,14 +3,15 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	xmlns:local="clr-namespace:TechTourDemo" 
 	x:Class="TechTourDemo.TechTourDemoPage" 
-	Title="X.F Demo!">
+	Title="X.F Demo!"
+	x:Name="MainPage">
 	<ContentView.ToolbarItems>
-		<ToolbarItem Name="Agregar" Order="Primary" Text="Agregar" Clicked="Handle_Clicked" />
+		<ToolbarItem Name="Agregar" Order="Primary" Text="Agregar" Command="{Binding AddTodoCommand}" />
 	</ContentView.ToolbarItems>
-	<ListView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="TodoList" ItemSelected="Handle_ItemSelected">
+	<ListView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="TodoList" ItemsSource="{Binding TodoItems}">
 		<ListView.ItemTemplate>
 			<DataTemplate>
-				<TextCell Text="{Binding Name}" />
+				<TextCell Text="{Binding Name}" Command="{Binding BindingContext.SelectTodoItemCommand, Source={x:Reference MainPage}}" CommandParameter="{Binding .}" />
 			</DataTemplate>
 		</ListView.ItemTemplate>
 	</ListView>
